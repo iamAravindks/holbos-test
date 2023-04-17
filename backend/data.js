@@ -1,4 +1,4 @@
-const engineeringDiscipline = [
+export const engineeringDisciplineData = [
   {
     discipline: " EEE",
     details: [
@@ -9,17 +9,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Wind Turbines",
-            descriptionHowThisProductMade:
+            productDescription:
               "Wind turbines are made up of several components including blades, a rotor, a gearbox, and a generator. The blades capture the wind energy and rotate the rotor which in turn spins the generator to produce electricity.",
           },
           {
             productName: "Solar Panels",
-            descriptionHowThisProductMade:
+            productDescription:
               "Solar panels are made up of photovoltaic cells which convert sunlight into electricity. The cells are made of semiconductor materials such as silicon, and are arranged in a grid-like pattern on the panel to maximize the amount of sunlight that can be absorbed.",
           },
           {
             productName: "Smart Grids",
-            descriptionHowThisProductMade:
+            productDescription:
               "Smart grids are a modernized version of traditional power grids. They use advanced communication and control technologies to manage the flow of electricity more efficiently, and enable the integration of renewable energy sources such as wind and solar power.",
           },
         ],
@@ -49,17 +49,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Electric Motors",
-            descriptionHowThisProductMade:
+            productDescription:
               "Electric motors are made up of several components including a stator, a rotor, and bearings. The stator contains the coils of wire that generate a magnetic field when electric current passes through them. The rotor is a rotating component that interacts with the magnetic field to produce torque.",
           },
           {
             productName: "Gas Turbines",
-            descriptionHowThisProductMade:
+            productDescription:
               "Gas turbines are made up of several components including a compressor, a combustion chamber, and a turbine. The compressor takes in air and compresses it, which is then mixed with fuel in the combustion chamber and ignited to produce hot, high-pressure gas. This gas flows through the turbine, which uses the energy to produce electricity or mechanical power.",
           },
           {
             productName: "Renewable Energy Solutions",
-            descriptionHowThisProductMade:
+            productDescription:
               "Siemens offers a range of renewable energy solutions such as wind turbines, solar inverters, and energy storage systems. These products are designed to help customers transition to a low-carbon energy future.",
           },
         ],
@@ -85,17 +85,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Transformers",
-            descriptionHowThisProductMade:
+            productDescription:
               "Transformers are made by winding copper or aluminum wire around a core made of iron or steel laminations. The winding is then insulated and coated with varnish or resin to protect it from moisture and other environmental factors.",
           },
           {
             productName: "Switchgears",
-            descriptionHowThisProductMade:
+            productDescription:
               "Switchgears are made by assembling various components such as circuit breakers, isolators, relays, and control panels. These components are then wired together and tested to ensure they function properly.",
           },
           {
             productName: "Drives",
-            descriptionHowThisProductMade:
+            productDescription:
               "Drives are made by assembling power electronics components such as rectifiers, inverters, and DC-DC converters. These components are then programmed with software to control the speed and torque of electric motors.",
           },
         ],
@@ -123,21 +123,21 @@ const engineeringDiscipline = [
       {
         companyName: "Intel",
         companyDescription:
-          "ntel is an American multinational corporation that designs and manufactures microprocessors and other semiconductor components. The company also provides software and other related services. Intel is one of the world's largest and highest valued semiconductor chip makers, based on revenue.",
+          "Intel is an American multinational corporation that designs and manufactures microprocessors and other semiconductor components. The company also provides software and other related services. Intel is one of the world's largest and highest valued semiconductor chip makers, based on revenue.",
         products: [
           {
             productName: "Processors",
-            descriptionHowThisProductMade:
+            productDescription:
               "Processors are made using a complex process that involves lithography, etching, and doping to create transistors on a silicon wafer. These transistors are then connected using metal wires to form the logic gates and other components that make up a processor.",
           },
           {
             productName: "Chips",
-            descriptionHowThisProductMade:
+            productDescription:
               "Chips are made using a similar process to processors, but are generally simpler and have fewer transistors. Chips can be used for a variety of applications, including memory, I/O interfaces, and control systems.",
           },
           {
             productName: "Memory",
-            descriptionHowThisProductMade:
+            productDescription:
               "Memory chips are made using a similar process to processors, but are optimized for storing data instead of performing calculations. Different types of memory, such as DRAM and SRAM, have different characteristics and are used for different purposes.",
           },
         ],
@@ -171,17 +171,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Snapdragon Processors",
-            descriptionHowThisProductMade:
+            productDescription:
               "Snapdragon processors are made using a process similar to other processors, but are optimized for mobile devices and other low-power applications. They include a variety of components, such as CPUs, GPUs, and wireless modems.",
           },
           {
             productName: "5G Modems",
-            descriptionHowThisProductMade:
+            productDescription:
               "5G modems are specialized chips that enable wireless communication using the latest cellular network technology. They are designed to be low-power and high-speed, and can be used in a variety of devices.",
           },
           {
             productName: "Wi-Fi Chips",
-            descriptionHowThisProductMade:
+            productDescription:
               "Wi-Fi chips are used to enable wireless communication using the Wi-Fi protocol. They are designed to be low-power and high-speed, and can be used in a variety of devices.",
           },
         ],
@@ -212,17 +212,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Semiconductors",
-            descriptionHowThisProductMade:
+            productDescription:
               "Semiconductors are made using a process called 'wafer fabrication' where layers of different materials are deposited on a silicon wafer and then etched to form the desired circuit pattern.",
           },
           {
             productName: "Sensors",
-            descriptionHowThisProductMade:
+            productDescription:
               "Sensors are made using a variety of manufacturing processes depending on the type of sensor, but they all involve depositing layers of materials onto a substrate to form the sensing element.",
           },
           {
             productName: "Embedded Systems",
-            descriptionHowThisProductMade:
+            productDescription:
               "Embedded systems are made by designing and programming integrated circuits that can perform specific tasks, such as controlling a device or gathering data from sensors.",
           },
         ],
@@ -262,17 +262,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Search Engine",
-            descriptionHowThisProductMade:
+            productDescription:
               "Google's search engine uses a complex algorithm to analyze and rank web pages based on various factors like relevance, popularity, and quality. It crawls the web to discover new pages, indexes them, and serves the most relevant results to the users.",
           },
           {
             productName: "Android",
-            descriptionHowThisProductMade:
+            productDescription:
               "Android is an open-source operating system for mobile devices. It is based on the Linux kernel and is designed to be customizable and flexible. It is developed by the Android Open Source Project (AOSP), which is led by Google.",
           },
           {
             productName: "Gmail",
-            descriptionHowThisProductMade:
+            productDescription:
               "Gmail is a free email service provided by Google. It uses a web-based interface and offers features like spam filtering, conversation threading, and integration with other Google services. It is developed using various programming languages like Java, JavaScript, and C++.",
           },
         ],
@@ -299,17 +299,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Windows",
-            descriptionHowThisProductMade:
+            productDescription:
               "Windows is a series of operating systems developed by Microsoft. It is the most widely used desktop operating system in the world. It is developed using various programming languages like C, C++, and C#.",
           },
           {
             productName: "Office",
-            descriptionHowThisProductMade:
+            productDescription:
               "Microsoft Office is a suite of productivity applications that includes Word, Excel, PowerPoint, and Outlook. It is used by millions of people around the world. It is developed using various programming languages like C++, C#, and JavaScript.",
           },
           {
             productName: "Azure",
-            descriptionHowThisProductMade:
+            productDescription:
               "Azure is a cloud computing platform developed by Microsoft. It offers a wide range of services like virtual machines, databases, storage, and networking. It is developed using various programming languages like C++, C#, and Java.",
           },
         ],
@@ -340,17 +340,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Amazon Web Services",
-            descriptionHowThisProductMade:
+            productDescription:
               "Amazon Web Services (AWS) is a cloud platform that offers over 200 fully-featured services from data centers globally. These services include computing, storage, databases, analytics, networking, mobile, developer tools, management tools, IoT, security, and enterprise applications.",
           },
           {
             productName: "Kindle",
-            descriptionHowThisProductMade:
+            productDescription:
               "Kindle is a series of e-readers designed and marketed by Amazon. These devices enable users to browse, buy, download, and read e-books, newspapers, magazines, and other digital media via wireless networking.",
           },
           {
             productName: "Prime",
-            descriptionHowThisProductMade:
+            productDescription:
               "Amazon Prime is a paid subscription service offered by Amazon that provides users with access to streaming of movies, TV shows, and music, unlimited photo storage, free shipping, and other benefits.",
           },
         ],
@@ -386,17 +386,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Electric Cars",
-            descriptionHowThisProductMade:
+            productDescription:
               "Tesla's electric cars are powered by lithium-ion battery packs that are produced at the Gigafactory. The battery packs are assembled with thousands of individual battery cells and advanced cooling and safety systems.",
           },
           {
             productName: "Solar Roofs",
-            descriptionHowThisProductMade:
+            productDescription:
               "Tesla's Solar Roofs are made of tempered glass tiles with integrated solar cells. These tiles are designed to look like traditional roofing materials and are installed with a new roofing system to ensure maximum energy generation and durability.",
           },
           {
             productName: "Powerwalls",
-            descriptionHowThisProductMade:
+            productDescription:
               "Tesla's Powerwalls are rechargeable lithium-ion battery energy storage systems that are designed to store excess solar energy during the day and power homes at night or during grid outages. The Powerwalls are produced at the Gigafactory.",
           },
         ],
@@ -431,17 +431,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Cars",
-            descriptionHowThisProductMade:
+            productDescription:
               "General Motors produces a wide range of cars, including sedans, SUVs, and pickup trucks. The cars are manufactured using advanced materials and production processes to ensure quality and safety.",
           },
           {
             productName: "Trucks",
-            descriptionHowThisProductMade:
+            productDescription:
               "General Motors produces a range of trucks, including light-duty and heavy-duty pickups, cargo vans, and chassis cabs. These trucks are designed for commercial and personal use and are manufactured with durability and reliability in mind.",
           },
           {
             productName: "Crossovers",
-            descriptionHowThisProductMade:
+            productDescription:
               "General Motors produces a range of crossovers, which are vehicles that combine the features of an SUV and a car. These vehicles are designed to be versatile and practical, with ample cargo space and room for passengers.",
           },
         ],
@@ -476,12 +476,12 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Commercial Aircraft",
-            descriptionHowThisProductMade:
+            productDescription:
               "Boeing designs, manufactures, and sells commercial airplanes to airlines worldwide. Its product line-up includes the 737, 747, 767, 777, and 787 families of airplanes, as well as the 747-8 and the 777X.",
           },
           {
             productName: "Defense, Space, and Security",
-            descriptionHowThisProductMade:
+            productDescription:
               "Boeing's defense, space, and security division provides a broad range of products and services to military and government customers worldwide, including aircraft, satellites, and weapons systems.",
           },
         ],
@@ -516,17 +516,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Infrastructure",
-            descriptionHowThisProductMade:
+            productDescription:
               "Bechtel provides engineering, construction, and project management services for infrastructure projects such as highways, bridges, tunnels, airports, and ports. Their work has helped to build critical infrastructure around the world, improving transportation and facilitating economic growth.",
           },
           {
             productName: "Mining",
-            descriptionHowThisProductMade:
+            productDescription:
               "Bechtel provides engineering, construction, and project management services for mining operations, helping mining companies to design, build, and operate mines more efficiently and safely. Bechtel's work has helped to increase productivity and reduce costs in the mining industry.",
           },
           {
             productName: "Oil & Gas",
-            descriptionHowThisProductMade:
+            productDescription:
               "Bechtel provides engineering, construction, and project management services for oil and gas production and processing facilities. Their work has helped to improve the efficiency and safety of oil and gas operations around the world.",
           },
         ],
@@ -557,17 +557,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Transportation",
-            descriptionHowThisProductMade:
+            productDescription:
               "Jacobs provides engineering, design, and project management services for transportation infrastructure such as highways, railways, airports, and seaports. Their work has helped to improve mobility and connectivity around the world.",
           },
           {
             productName: "Water",
-            descriptionHowThisProductMade:
+            productDescription:
               "Jacobs provides engineering and design services for water infrastructure such as dams, pipelines, and treatment plants. Their work has helped to improve access to clean water and reduce water scarcity in many regions.",
           },
           {
             productName: "Buildings",
-            descriptionHowThisProductMade:
+            productDescription:
               "Jacobs provides engineering and design services for buildings such as offices, hospitals, and schools. Their work has helped to create safe, efficient, and sustainable buildings that improve people's quality of life.",
           },
         ],
@@ -602,17 +602,17 @@ const engineeringDiscipline = [
         products: [
           {
             productName: "Infrastructure",
-            descriptionHowThisProductMade:
+            productDescription:
               "AECOM provides engineering, consulting, and construction services for infrastructure projects such as highways, bridges, airports, and rail systems. Their projects include the expansion of Los Angeles International Airport and the renovation of the New York City subway system.",
           },
           {
             productName: "Environment",
-            descriptionHowThisProductMade:
+            productDescription:
               "AECOM offers services in environmental remediation, water resource management, and sustainability. They work on projects like cleaning up hazardous waste sites, creating sustainable infrastructure, and designing wildlife conservation plans.",
           },
           {
             productName: "Buildings",
-            descriptionHowThisProductMade:
+            productDescription:
               "AECOM provides architecture, engineering, and construction services for buildings such as office buildings, hospitals, and sports arenas. Their projects include the design of the Mercedes-Benz Stadium in Atlanta and the construction of the headquarters for the U.S. Department of Homeland Security.",
           },
         ],
@@ -642,3 +642,122 @@ const engineeringDiscipline = [
     ],
   },
 ];
+
+const EEE = {
+  discipline: " EEE",
+  details: [
+    {
+      companyName: "General Electric",
+      companyDescription:
+        "GE is a multinational conglomerate that specializes in aviation, power, and renewable energy. It operates through several segments, including aviation, power, renewable energy, healthcare, and more. GE is known for its innovation and technological advancements, having been awarded numerous patents throughout its history.",
+      products: [
+        {
+          productName: "Wind Turbines",
+          productDescription:
+            "Wind turbines are made up of several components including blades, a rotor, a gearbox, and a generator. The blades capture the wind energy and rotate the rotor which in turn spins the generator to produce electricity.",
+        },
+        {
+          productName: "Solar Panels",
+          productDescription:
+            "Solar panels are made up of photovoltaic cells which convert sunlight into electricity. The cells are made of semiconductor materials such as silicon, and are arranged in a grid-like pattern on the panel to maximize the amount of sunlight that can be absorbed.",
+        },
+        {
+          productName: "Smart Grids",
+          productDescription:
+            "Smart grids are a modernized version of traditional power grids. They use advanced communication and control technologies to manage the flow of electricity more efficiently, and enable the integration of renewable energy sources such as wind and solar power.",
+        },
+      ],
+      peopleSoftSkills: ["Collaboration", "Innovation", "Attention to Detail"],
+      workCulture: [
+        {
+          culture: "Fast-paced",
+          importance:
+            "GE is known for its fast-paced work culture, where employees are expected to be highly productive and agile in responding to market demands.",
+        },
+        {
+          culture: "Team-oriented",
+          importance:
+            "GE values teamwork and collaboration, and encourages employees to work together to achieve common goals.",
+        },
+      ],
+      skillSets: ["Power Systems", "Control Systems", "Electromagnetics"],
+    },
+    {
+      companyName: "Siemens",
+      companyDescription:
+        "Siemens is a multinational conglomerate that operates in several industries, including energy, healthcare, and industrial automation. It is known for its innovation and technological advancements in fields such as renewable energy, smart infrastructure, and digitalization. Siemens' mission is to improve the quality of life for people around the world through its products and services.",
+      products: [
+        {
+          productName: "Electric Motors",
+          productDescription:
+            "Electric motors are made up of several components including a stator, a rotor, and bearings. The stator contains the coils of wire that generate a magnetic field when electric current passes through them. The rotor is a rotating component that interacts with the magnetic field to produce torque.",
+        },
+        {
+          productName: "Gas Turbines",
+          productDescription:
+            "Gas turbines are made up of several components including a compressor, a combustion chamber, and a turbine. The compressor takes in air and compresses it, which is then mixed with fuel in the combustion chamber and ignited to produce hot, high-pressure gas. This gas flows through the turbine, which uses the energy to produce electricity or mechanical power.",
+        },
+        {
+          productName: "Renewable Energy Solutions",
+          productDescription:
+            "Siemens offers a range of renewable energy solutions such as wind turbines, solar inverters, and energy storage systems. These products are designed to help customers transition to a low-carbon energy future.",
+        },
+      ],
+      peopleSoftSkills: ["Adaptability", "Problem Solving", "Communication"],
+      workCulture: [
+        {
+          culture: "Innovative",
+          importance:
+            "Siemens encourages innovation and creativity, and values employees who can come up with new ideas and solutions.",
+        },
+        {
+          culture: "Collaborative",
+          importance:
+            "Siemens values teamwork and collaboration, and encourages employees to work together to solve complex problems.",
+        },
+      ],
+      skillSets: ["Electrical Machines", "Power Electronics", "Smart Grids"],
+    },
+    {
+      companyName: "ABB",
+      companyDescription:
+        "ABB is a global technology company that specializes in robotics, automation, and electrical equipment. It operates through several segments, including electrification, industrial automation, motion, and robotics & discrete automation. ABB's mission is to improve energy efficiency and productivity for its customers across a wide range of industries.",
+      products: [
+        {
+          productName: "Transformers",
+          productDescription:
+            "Transformers are made by winding copper or aluminum wire around a core made of iron or steel laminations. The winding is then insulated and coated with varnish or resin to protect it from moisture and other environmental factors.",
+        },
+        {
+          productName: "Switchgears",
+          productDescription:
+            "Switchgears are made by assembling various components such as circuit breakers, isolators, relays, and control panels. These components are then wired together and tested to ensure they function properly.",
+        },
+        {
+          productName: "Drives",
+          productDescription:
+            "Drives are made by assembling power electronics components such as rectifiers, inverters, and DC-DC converters. These components are then programmed with software to control the speed and torque of electric motors.",
+        },
+      ],
+      peopleSoftSkills: ["Customer Focus", "Innovation", "Teamwork"],
+      workCulture: [
+        {
+          culture: "Dynamic",
+          importance:
+            "ABB values a dynamic work culture that encourages employees to be proactive, take risks, and pursue new ideas and opportunities. This helps to keep the company innovative and competitive in a rapidly changing industry.",
+        },
+        {
+          culture: "Inclusive",
+          importance:
+            "ABB believes in creating a diverse and inclusive workplace where all employees feel valued and respected. This helps to foster a collaborative and supportive work environment that encourages teamwork and creativity.",
+        },
+      ],
+      skillSets: ["Power Systems", "Control Systems", "Electrical Machines"],
+    },
+  ],
+};
+
+const EC = {
+  discipline: "EC",
+  details: [],
+};
