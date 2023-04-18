@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      colors: {
+        dim: "#f4f3f3",
+      },
     },
   },
   plugins: [require("daisyui")],
