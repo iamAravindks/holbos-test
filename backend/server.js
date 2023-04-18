@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 import morgan from "morgan";
 import { errorHandler, notFound } from "./middleware/middleware.js";
 import eDRouter from "./routes/eDRoute.js";
+import userRouter from "./routes/userRoute.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ connectDB();
 app.get("/", (req, res) => res.send("CONGRATS ,YOU SUMMONED holbos"));
 
 app.use("/api/ed", eDRouter);
+app.use("/api/user", userRouter);
 
 app.use(notFound);
 app.use(errorHandler);

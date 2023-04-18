@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { loadData } from "../controllers/eDController.js";
+import { isAuthUser } from "../middleware/middleware.js";
 
 const eDRouter = Router();
 
@@ -7,6 +8,6 @@ const eDRouter = Router();
 // @route GET /api/ed/load-ed
 // @access Public
 
-eDRouter.get("/load-ed", loadData);
+eDRouter.get("/load-ed", isAuthUser, loadData);
 
 export default eDRouter;
