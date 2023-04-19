@@ -1,8 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Context from "../../context/Context";
 import { IMAGES } from "../../utils";
 
 const Login = () => {
+  const { login, userInfo } = useContext(Context);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userInfo?._id) {
+      navigate("/");
+    }
+  }, [userInfo?._id]);
+
   const initialState = {
     email: "",
     password: "",
@@ -15,10 +24,18 @@ const Login = () => {
       [e.target.id]: e.target.value,
     }));
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    login(details.email, details.password);
+  };
+
   return (
     <div className="min-w-full min-h-screen  flex flex-col lg:flex-row">
       <div className="flex-[2] bg-dim min-h-full w-full flex justify-center items-center order-3 lg:order-1 lg:flex-1 animate-side-right">
-        <form className="flex flex-col gap-6  p-6 justify-center items-center">
+        <form
+          className="flex flex-col gap-6  p-6 justify-center items-center"
+          onSubmit={onSubmitHandler}
+        >
           <div className="w-full">
             <label htmlFor="email">Email</label>
             <input

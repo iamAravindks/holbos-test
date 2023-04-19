@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { userLogin, userSignUp } from "../controllers/userController.js";
+import {
+  loadProfile,
+  userLogin,
+  userSignUp,
+} from "../controllers/userController.js";
+import { isAuthUser } from "../middleware/middleware.js";
 
 const userRouter = Router();
 
@@ -14,5 +19,11 @@ userRouter.post("/signup", userSignUp);
 // @access Public
 
 userRouter.post("/login", userLogin);
+
+// @desc user load profile
+// @route POST /api/user/profile
+// @access Public
+
+userRouter.get("/profile", isAuthUser, loadProfile);
 
 export default userRouter;

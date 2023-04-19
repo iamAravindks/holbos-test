@@ -46,16 +46,15 @@ export const userSignUp = expressAsyncHandler(async (req, res) => {
 
 export const userLogin = expressAsyncHandler(async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!email || !password) {
       return res
         .status(403)
         .json({ message: "Sufficient values are not provided" });
     }
 
     const user = await User.findOne({
-      name,
       email,
     });
 
@@ -77,6 +76,20 @@ export const userLogin = expressAsyncHandler(async (req, res) => {
       res.status(401);
       throw new Error("invalid password or email");
     }
+  } catch (error) {
+    throw new Error(error.message ? error.message : "Internal server error");
+  }
+});
+
+// @desc Get profile
+// @access Private
+
+export const loadProfile = expressAsyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+    res.status(200).json({
+      data: user,
+    });
   } catch (error) {
     throw new Error(error.message ? error.message : "Internal server error");
   }
