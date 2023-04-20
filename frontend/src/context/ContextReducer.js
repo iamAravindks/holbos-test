@@ -6,9 +6,16 @@ import {
   SET_ERROR,
   SET_LOADING,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT_SUCCESS,
 } from "./Types";
 
 const ContextReducer = (state, action) => {
+  const initialState = {
+    userInfo: {},
+    error: null,
+    loading: false,
+    userStatus: null,
+  };
   switch (action.type) {
     case REQUEST:
       return { ...state, loading: true };
@@ -22,6 +29,10 @@ const ContextReducer = (state, action) => {
         userInfo: action.payload,
         error: null,
       };
+
+    case USER_LOGOUT_SUCCESS: {
+      return initialState;
+    }
 
     case SET_ERROR:
       return { ...state, error: action.payload, loading: false };

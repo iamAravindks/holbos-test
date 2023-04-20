@@ -27,10 +27,6 @@ export const userSignUp = expressAsyncHandler(async (req, res) => {
         maxAge: maxAge * 1000,
       });
 
-      res.cookie("Holbos_user_Status", user._id, {
-        maxAge: maxAge * 1000,
-        httpOnly: true,
-      });
       return res.status(201).json({
         data: user.toJSON(),
       });
@@ -66,9 +62,6 @@ export const userLogin = expressAsyncHandler(async (req, res) => {
         maxAge: maxAge * 1000,
       });
 
-      res.cookie("Holbos_user_Status", user._id, {
-        maxAge: maxAge * 1000,
-      });
       return res.status(201).json({
         data: user.toJSON(),
       });
@@ -90,6 +83,33 @@ export const loadProfile = expressAsyncHandler(async (req, res) => {
     res.status(200).json({
       data: user,
     });
+  } catch (error) {
+    throw new Error(error.message ? error.message : "Internal server error");
+  }
+});
+
+// @desc check auth
+//@access public
+
+export const checkAuth = expressAsyncHandler(async (req, res) => {
+  try {
+    const cookie = req.cookies["Holbos_Secure_Session_ID"];
+    if (cookie) {
+      return res.status(200).json({ session_id: true });
+    } else {
+      return res.status(200).json({ session_id: false });
+    }
+  } catch (error) {
+    throw new Error(error.message ? error.message : "Internal server error");
+  }
+});
+
+//  @desc log out
+
+export const logOut = expressAsyncHandler(async (req, res) => {
+  try {
+    res.clearCookie("Holbos_Secure_Session_ID", { httpOnly: true });
+    res.status(200).json({ message: "Log out successfully" });
   } catch (error) {
     throw new Error(error.message ? error.message : "Internal server error");
   }

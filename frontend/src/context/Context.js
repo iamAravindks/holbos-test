@@ -10,12 +10,13 @@ import {
   SET_LOADING,
   USER_LOGIN_SUCCESS,
 } from "./Types";
+import { USER_LOGOUT_SUCCESS } from "./Types";
 
 const initialState = {
   userInfo: null,
   error: null,
-  loading: null,
-  userStatus: null,
+  loading: false,
+  userStatus: {},
 };
 
 const BASE_URL = "http://localhost:5000";
@@ -89,6 +90,65 @@ export const Provider = ({ children }) => {
     }
   };
 
+  // check auth
+
+  const checkAuth = async () => {
+    try {
+      dispatch({ type: REQUEST });
+
+      const { data } = await axios.get(
+        `${BASE_URL}/api/user/check-auth`,
+        config
+      );
+      const isAuth = await data?.session_id;
+
+      return isAuth;
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
+
+  const logOut = async () => {
+    try {
+      dispatch({ type: REQUEST });
+
+      const res = await axios.post(`${BASE_URL}/api/user/logout`, {}, config);
+      if (res.status === 200) {
+        dispatch({
+          type: USER_LOGOUT_SUCCESS,
+        });
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
+
   const setLoading = (set) => {
     if (set) {
       dispatch({ type: SET_LOADING });
@@ -110,6 +170,8 @@ export const Provider = ({ children }) => {
         loadProfile,
         setLoading,
         clearError,
+        checkAuth,
+        logOut,
       }}
     >
       {children}

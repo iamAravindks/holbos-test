@@ -10,7 +10,7 @@ const Login = () => {
     if (userInfo?._id) {
       navigate("/");
     }
-  }, [userInfo?._id]);
+  }, [navigate, userInfo?._id]);
 
   const initialState = {
     email: "",

@@ -1,6 +1,8 @@
 import { Router } from "express";
 import {
+  checkAuth,
   loadProfile,
+  logOut,
   userLogin,
   userSignUp,
 } from "../controllers/userController.js";
@@ -25,5 +27,17 @@ userRouter.post("/login", userLogin);
 // @access Public
 
 userRouter.get("/profile", isAuthUser, loadProfile);
+
+// @desc user check auth
+// @route GET /api/user/check-auth
+// @access Public
+
+userRouter.get("/check-auth", checkAuth);
+
+// @desc user log out
+// @route POST /api/user/check-auth
+// @access Public
+
+userRouter.post("/logout", logOut);
 
 export default userRouter;
