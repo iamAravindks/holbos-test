@@ -10,6 +10,7 @@ import {
   SET_ERROR,
   SET_LOADING,
   USER_LOGIN_SUCCESS,
+  USER_REGISTER_SUCCESS,
 } from "./Types";
 import { USER_LOGOUT_SUCCESS } from "./Types";
 
@@ -44,7 +45,6 @@ export const Provider = ({ children }) => {
         { email, password },
         config
       );
-      console.log(data);
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: data?.data,
@@ -66,11 +66,39 @@ export const Provider = ({ children }) => {
     }
   };
 
+  const signUp = async (name, email, password) => {
+    try {
+      dispatch({ type: REQUEST });
+
+      const { data } = await axios.post(
+        `${BASE_URL}/api/user/signup`,
+        { name, email, password },
+        config
+      );
+      dispatch({
+        type: USER_REGISTER_SUCCESS,
+        payload: data?.data,
+      });
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
   const loadProfile = async () => {
     try {
       dispatch({ type: REQUEST });
       const { data } = await axios.get(`${BASE_URL}/api/user/profile`, config);
-      console.log(data);
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: data?.data,
@@ -202,6 +230,7 @@ export const Provider = ({ children }) => {
         checkAuth,
         logOut,
         loadEd,
+        signUp,
       }}
     >
       {children}

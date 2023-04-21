@@ -4,7 +4,7 @@ import Context from "../../context/Context";
 import EdCard from "./EdCard";
 
 const ED = () => {
-  const { ed } = useContext(Context);
+  const { ed, loadEd } = useContext(Context);
   const [tags, setTags] = useState([]);
   const [eds, setEds] = useState(ed);
 
@@ -19,7 +19,6 @@ const ED = () => {
       (e) => tags.findIndex((tag) => tag === e.discipline) !== -1
     );
 
-    console.log(data);
     // setEds();
   }, [ed, tags]);
 

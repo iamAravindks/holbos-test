@@ -1,9 +1,7 @@
 import React from "react";
-import { IMAGES } from "../../utils";
 import { useNavigate } from "react-router-dom";
 const EdCard = ({ item }) => {
   const navigate = useNavigate();
-  console.log(item);
   const onClickHandler = (id) => navigate(`/ed/${item.discipline}/${id}`);
   return (
     <div className="">

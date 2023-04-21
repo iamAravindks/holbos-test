@@ -10,7 +10,6 @@ const SingleEd = () => {
   const currentEd = ed
     ?.filter((item) => item.discipline === discipline)
     .reduce((acc, curr, index) => {
-      console.log({ acc, curr, index });
       acc = curr;
       return acc;
     })

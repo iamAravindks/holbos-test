@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { IMAGES } from "../../utils";
+import Context from "../../context/Context";
+import { useEffect } from "react";
 
 const SignUp = () => {
+  const { signUp, userInfo } = useContext(Context);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userInfo?._id) {
+      navigate("/");
+    }
+  }, [navigate, userInfo?._id]);
+
   const initialState = {
     name: "",
     email: "",
@@ -15,11 +26,19 @@ const SignUp = () => {
   };
   const [details, setDetails] = useState(initialState);
 
-  const handleFormDetails = (e) =>
+  const handleFormDetails = (e) => {
     setDetails((prev) => ({
       ...prev,
       [e.target.id]: e.target.value,
     }));
+
+    if (e.target.id === "password" && details.rePassword) {
+      setDetails((prev) => ({
+        ...prev,
+        error: prev.password !== prev.rePassword,
+      }));
+    }
+  };
 
   const handleRePassword = (e) => {
     setDetails((prev) => ({
@@ -31,6 +50,11 @@ const SignUp = () => {
 
   const toggleVisibility = () =>
     setDetails((prev) => ({ ...prev, hidden: !prev.hidden }));
+
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    signUp(details.name, details.email, details.password);
+  };
 
   return (
     <div className="min-w-full min-h-screen  flex flex-col lg:flex-row">
@@ -49,6 +73,18 @@ const SignUp = () => {
       </div>
       <div className="flex-[2] bg-dim min-h-full w-full flex justify-center items-center   lg:flex-1 animate-side-right">
         <form className="flex flex-col gap-6  p-6 justify-center items-center">
+          <div className="w-full flex flex-col">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="input input-bordered input-primary w-full max-w-xs"
+              id="name"
+              required
+              value={details.name}
+              onChange={handleFormDetails}
+            />
+          </div>
           <div className="w-full flex flex-col">
             <label htmlFor="email">Email</label>
             <input
@@ -108,6 +144,7 @@ const SignUp = () => {
             type="submit"
             className="btn btn-primary btn-wide text-white"
             disabled={details.error ? true : false}
+            onClick={onClickHandler}
           >
             SignUp
           </button>

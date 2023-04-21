@@ -23,16 +23,21 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    checkAuth()
-      .then((res) => {
+
+    const fetchData = async () => {
+      try {
+        const res = await checkAuth();
         if (res) {
-          Promise.all([loadProfile(), loadEd()]).finally(() =>
-            setIsProfileLoaded(true)
-          );
+          await Promise.all([loadProfile(), loadEd()]);
         }
-      })
-      .finally(() => setLoading(false));
-  }, []);
+      } finally {
+        setLoading(false);
+        setIsProfileLoaded(true);
+      }
+    };
+
+    fetchData();
+  }, [userInfo?._id]);
 
   if (!isProfileLoaded) return <LoaderUI />;
 
