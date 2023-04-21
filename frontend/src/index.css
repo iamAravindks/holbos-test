@@ -10,3 +10,11 @@
 font-family: 'Roboto', sans-serif;
     }
 }
+
+p.dim-last-few::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 0.5em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+}

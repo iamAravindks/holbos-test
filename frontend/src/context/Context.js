@@ -6,6 +6,7 @@ import {
   CLEAR_LOADING,
   REQUEST,
   REQUEST_DONE,
+  SET_ED,
   SET_ERROR,
   SET_LOADING,
   USER_LOGIN_SUCCESS,
@@ -17,6 +18,7 @@ const initialState = {
   error: null,
   loading: false,
   userStatus: {},
+  ed: [],
 };
 
 const BASE_URL = "http://localhost:5000";
@@ -149,6 +151,32 @@ export const Provider = ({ children }) => {
     }
   };
 
+  const loadEd = async () => {
+    try {
+      dispatch({ type: REQUEST });
+
+      const { data } = await axios.get(`${BASE_URL}/api/ed/load-ed`, config);
+      dispatch({
+        type: SET_ED,
+        payload: data?.data,
+      });
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
+
   const setLoading = (set) => {
     if (set) {
       dispatch({ type: SET_LOADING });
@@ -166,12 +194,14 @@ export const Provider = ({ children }) => {
         loading: userState.loading,
         error: userState.error,
         userStatus: userState.userStatus,
+        ed: userState.ed,
         login,
         loadProfile,
         setLoading,
         clearError,
         checkAuth,
         logOut,
+        loadEd,
       }}
     >
       {children}

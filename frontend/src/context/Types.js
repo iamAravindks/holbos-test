@@ -12,3 +12,6 @@ export const CLEAR_ERROR = "CLEAR_ERROR";
 
 export const SET_LOADING = "SET_LOADING";
 export const CLEAR_LOADING = "CLEAR_LOADING";
+
+export const SET_ED = "SET_ED";
+export const CLEAR_ED = "CLEAR_ED";

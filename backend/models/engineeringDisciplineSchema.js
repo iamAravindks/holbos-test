@@ -5,6 +5,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  productImage: {
+    type: String,
+    required: true,
+  },
   productDescription: {
     type: String,
     required: true,
@@ -27,6 +31,10 @@ const detailSchema = new Schema({
     required: true,
   },
   companyDescription: {
+    type: String,
+    required: true,
+  },
+  companyImage: {
     type: String,
     required: true,
   },

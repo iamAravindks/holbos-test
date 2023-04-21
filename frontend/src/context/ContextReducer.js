@@ -3,6 +3,7 @@ import {
   CLEAR_LOADING,
   REQUEST,
   REQUEST_DONE,
+  SET_ED,
   SET_ERROR,
   SET_LOADING,
   USER_LOGIN_SUCCESS,
@@ -15,6 +16,7 @@ const ContextReducer = (state, action) => {
     error: null,
     loading: false,
     userStatus: null,
+    ed: [],
   };
   switch (action.type) {
     case REQUEST:
@@ -30,9 +32,11 @@ const ContextReducer = (state, action) => {
         error: null,
       };
 
-    case USER_LOGOUT_SUCCESS: {
+    case USER_LOGOUT_SUCCESS:
       return initialState;
-    }
+
+    case SET_ED:
+      return { ...state, ed: action.payload };
 
     case SET_ERROR:
       return { ...state, error: action.payload, loading: false };
