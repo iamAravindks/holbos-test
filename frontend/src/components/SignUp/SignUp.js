@@ -15,7 +15,7 @@ const SignUp = () => {
       navigate("/");
     }
   }, [navigate, userInfo?._id]);
-
+  const disciplines = ["CSE", "EEE", "ECE", "ME", "CE"];
   const initialState = {
     name: "",
     email: "",
@@ -23,6 +23,7 @@ const SignUp = () => {
     rePassword: "",
     error: null,
     hidden: true,
+    discipline: "",
   };
   const [details, setDetails] = useState(initialState);
 
@@ -53,7 +54,13 @@ const SignUp = () => {
 
   const onClickHandler = (e) => {
     e.preventDefault();
-    signUp(details.name, details.email, details.password);
+    const { name, email, discipline, password, rePassword } = details;
+
+    if (!name || !email || !discipline || !password || !rePassword) {
+      alert("fill the details correctly");
+      return;
+    }
+    signUp(name, email, discipline, password);
   };
 
   return (
@@ -96,6 +103,25 @@ const SignUp = () => {
               value={details.email}
               onChange={handleFormDetails}
             />
+          </div>
+
+          <div className="w-full flex flex-col">
+            <label htmlFor="discipline">Discipline</label>
+
+            <select
+              className="select select-bordered max-w-3xl "
+              value={details.discipline}
+              onChange={handleFormDetails}
+              id="discipline"
+              required
+            >
+              <option disabled selected>
+                Select Discipline
+              </option>
+              {disciplines.map((item, ind) => (
+                <option key={ind}>{item}</option>
+              ))}
+            </select>
           </div>
 
           <div className="w-full flex flex-col">

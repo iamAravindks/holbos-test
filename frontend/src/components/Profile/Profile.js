@@ -6,10 +6,10 @@ import { getColor } from "../../utils";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Profile = () => {
-  const { userInfo } = useContext(Context);
+  const { userInfo, updateProfile } = useContext(Context);
   const color = getColor(userInfo?.name + userInfo?.email);
   const [edit, setEdit] = useState(false);
-  const { name = "", email = "", skillSets = [] } = userInfo;
+  const { name = "", email = "", skillSets = [], discipline = "" } = userInfo;
   const initialSkills = [
     ...new Set(
       [
@@ -55,7 +55,7 @@ const Profile = () => {
     error: null,
     hidden: true,
     skills: skillSets,
-    discipline: "CSE",
+    discipline: discipline,
   };
   const [details, setDetails] = useState(initialState);
 
@@ -104,6 +104,15 @@ const Profile = () => {
     toggleMode();
   };
 
+  const profileUpdateHandler = (e) => {
+    e.preventDefault();
+    const { name, email, discipline, password, skills } = details;
+
+    if (password.length > 0)
+      updateProfile(name, email, discipline, skills, password);
+    else updateProfile(name, email, discipline, skills);
+  };
+
   const ProfileView = () => {
     return (
       <div className="max-w-[600px] flex flex-col gap-4 ">
@@ -111,6 +120,10 @@ const Profile = () => {
         <div className="flex gap-6 justify-between items-center  w-full ">
           <h4 className="text-lg  w-full ">Email:</h4>
           <h4 className="text-lg text-info  w-full ">{email}</h4>
+        </div>
+        <div className="flex gap-6 justify-between items-center  w-full ">
+          <h4 className="text-lg  w-full ">Discipline:</h4>
+          <h4 className="text-lg text-info  w-full ">{discipline}</h4>
         </div>
         <div className="flex gap-6 justify-between items-center  w-full ">
           <h2 className="text-lg">Skills:</h2>
@@ -146,7 +159,10 @@ const Profile = () => {
       </div>
 
       {edit ? (
-        <form className="flex gap-6 flex-wrap p-6 justify-center items-center w-full">
+        <form
+          className="flex gap-6 flex-wrap p-6 justify-center items-center w-full"
+          onSubmit={profileUpdateHandler}
+        >
           <div className="min-w-full flex flex-col">
             <label htmlFor="name">Name</label>
             <input
@@ -154,7 +170,6 @@ const Profile = () => {
               placeholder="Your Name"
               className="input input-bordered input-primary w-full max-w-3xl"
               id="name"
-              required
               value={details.name}
               onChange={handleFormDetails}
             />
@@ -166,7 +181,6 @@ const Profile = () => {
               placeholder="Your Email"
               className="input input-bordered input-primary w-full max-w-3xl"
               id="email"
-              required
               value={details.email}
               onChange={handleFormDetails}
             />
@@ -193,7 +207,6 @@ const Profile = () => {
                 placeholder="Your Password"
                 className="input input-bordered input-primary w-full "
                 id="password"
-                required
                 value={details.password}
                 onChange={handleFormDetails}
               />
@@ -209,7 +222,6 @@ const Profile = () => {
                     details.error ? "input-error" : "input-primary"
                   } w-full  pr-8`}
                   id="rePassword"
-                  required
                   value={details.rePassword}
                   onChange={handleRePassword}
                   onBlur={handleRePassword}

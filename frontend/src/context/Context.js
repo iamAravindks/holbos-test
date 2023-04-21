@@ -10,12 +10,13 @@ import {
   SET_ERROR,
   SET_LOADING,
   USER_LOGIN_SUCCESS,
+  USER_PROFILE_UPDATE,
   USER_REGISTER_SUCCESS,
 } from "./Types";
 import { USER_LOGOUT_SUCCESS } from "./Types";
 
 const initialState = {
-  userInfo: null,
+  userInfo: {},
   error: null,
   loading: false,
   userStatus: {},
@@ -66,13 +67,13 @@ export const Provider = ({ children }) => {
     }
   };
 
-  const signUp = async (name, email, password) => {
+  const signUp = async (name, email, discipline, password) => {
     try {
       dispatch({ type: REQUEST });
 
       const { data } = await axios.post(
         `${BASE_URL}/api/user/signup`,
-        { name, email, password },
+        { name, email, password, discipline },
         config
       );
       dispatch({
@@ -95,6 +96,46 @@ export const Provider = ({ children }) => {
       });
     }
   };
+
+  const updateProfile = async (
+    name,
+    email,
+    discipline,
+    skillSets,
+    password = null
+  ) => {
+    try {
+      dispatch({ type: REQUEST });
+      const payload = { name, email, discipline, skillSets };
+      if (password) {
+        payload.password = password;
+      }
+      const { data } = await axios.patch(
+        `${BASE_URL}/api/user/update-profile`,
+        payload,
+        config
+      );
+      dispatch({
+        type: USER_PROFILE_UPDATE,
+        payload: data?.data,
+      });
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
+
   const loadProfile = async () => {
     try {
       dispatch({ type: REQUEST });
@@ -231,6 +272,7 @@ export const Provider = ({ children }) => {
         logOut,
         loadEd,
         signUp,
+        updateProfile,
       }}
     >
       {children}

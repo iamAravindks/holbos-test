@@ -8,6 +8,7 @@ import {
   SET_LOADING,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT_SUCCESS,
+  USER_PROFILE_UPDATE,
   USER_REGISTER_SUCCESS,
 } from "./Types";
 
@@ -27,6 +28,7 @@ const ContextReducer = (state, action) => {
 
     case USER_LOGIN_SUCCESS:
     case USER_REGISTER_SUCCESS:
+    case USER_PROFILE_UPDATE:
       return {
         ...state,
         loading: false,

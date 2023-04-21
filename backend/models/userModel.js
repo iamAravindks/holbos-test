@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  discipline: {
+    type: String,
+    enum: ["CSE", "ME", "ECE", "CE", "EEE"],
+    required: true,
+  },
   skillSets: [String],
 });
 

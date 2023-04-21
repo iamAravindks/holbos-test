@@ -6,9 +6,9 @@ import generateToken from "../utils/utils.js";
 // @access Public
 export const userSignUp = expressAsyncHandler(async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, discipline } = req.body;
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !discipline) {
       return res
         .status(403)
         .json({ message: "Sufficient values are not provided" });
@@ -18,6 +18,7 @@ export const userSignUp = expressAsyncHandler(async (req, res) => {
       name,
       email,
       password,
+      discipline,
     });
     if (user) {
       const maxAge = 3 * 24 * 60 * 60;
@@ -124,12 +125,13 @@ export const profileUpdate = expressAsyncHandler(async (req, res) => {
         name = user.name,
         email = user.email,
         skillSets = [],
+        discipline = user.discipline,
         password,
       } = req.body;
       const updatedUser = await User.findOneAndUpdate(
         { _id: req.user._id },
         {
-          $set: { name, email, skillSets },
+          $set: { name, email, skillSets, discipline },
         },
         { new: true } // return the updated document
       );
