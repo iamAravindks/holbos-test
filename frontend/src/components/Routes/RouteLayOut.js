@@ -5,6 +5,7 @@ import PrivateRoutingLayout from "./PrivateRoutingLayout";
 import Home from "../Home/Home";
 import Navbar from "../Navbar/Navbar";
 import SingleEd from "../ED/SingleEd";
+import Profile from "../Profile/Profile";
 
 const RouteLayOut = () => {
   const Layout = () => {
@@ -24,6 +25,7 @@ const RouteLayOut = () => {
           <Route element={<PrivateRoutingLayout />}>
             <Route index element={<Home />}></Route>
             <Route path="/ed/:discipline/:id" element={<SingleEd />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Route>
       </Routes>
