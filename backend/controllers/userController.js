@@ -114,3 +114,38 @@ export const logOut = expressAsyncHandler(async (req, res) => {
     throw new Error(error.message ? error.message : "Internal server error");
   }
 });
+
+export const profileUpdate = expressAsyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+
+    if (user) {
+      const {
+        name = user.name,
+        email = user.email,
+        skillSets = [],
+        password,
+      } = req.body;
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $set: { name, email, skillSets },
+        },
+        { new: true } // return the updated document
+      );
+
+      if (updatedUser && password) {
+        updatedUser.password = password;
+        await updatedUser.save();
+      }
+
+      if (updatedUser) {
+        return res.status(200).json({
+          data: updatedUser.toJSON(),
+        });
+      }
+    }
+  } catch (error) {
+    throw new Error(error.message ? error.message : "Internal server error");
+  }
+});

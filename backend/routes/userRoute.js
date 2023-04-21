@@ -3,6 +3,7 @@ import {
   checkAuth,
   loadProfile,
   logOut,
+  profileUpdate,
   userLogin,
   userSignUp,
 } from "../controllers/userController.js";
@@ -35,9 +36,15 @@ userRouter.get("/profile", isAuthUser, loadProfile);
 userRouter.get("/check-auth", checkAuth);
 
 // @desc user log out
-// @route POST /api/user/check-auth
+// @route POST /api/user/logout
 // @access Public
 
 userRouter.post("/logout", logOut);
+
+// @desc user update profile
+// @route PATCH /api/user/update-profile
+// @access Private
+
+userRouter.patch("/update-profile", isAuthUser, profileUpdate);
 
 export default userRouter;
