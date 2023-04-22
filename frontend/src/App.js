@@ -7,7 +7,7 @@ import LoaderUI from "./components/Loader/LoaderUI";
 import Error from "./components/Error/Error";
 
 const App = () => {
-  const { loadProfile, userInfo, setLoading, checkAuth, loadEd } =
+  const { loadProfile, userInfo, setLoading, checkAuth, loadEd, loadSkills } =
     useContext(Context);
   const [isProfileLoaded, setIsProfileLoaded] = useState(false);
 
@@ -28,7 +28,7 @@ const App = () => {
       try {
         const res = await checkAuth();
         if (res) {
-          await Promise.all([loadProfile(), loadEd()]);
+          await Promise.all([loadProfile(), loadEd(), loadSkills()]);
         }
       } finally {
         setLoading(false);

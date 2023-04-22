@@ -15,4 +15,6 @@ export const SET_LOADING = "SET_LOADING";
 export const CLEAR_LOADING = "CLEAR_LOADING";
 
 export const SET_ED = "SET_ED";
+export const SET_SKILLS = "SET_SKILLS";
+
 export const CLEAR_ED = "CLEAR_ED";

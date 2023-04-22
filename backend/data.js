@@ -803,121 +803,187 @@ export const engineeringDisciplineData = [
   },
 ];
 
-const EEE = {
-  discipline: " EEE",
-  details: [
-    {
-      companyName: "General Electric",
-      companyDescription:
-        "GE is a multinational conglomerate that specializes in aviation, power, and renewable energy. It operates through several segments, including aviation, power, renewable energy, healthcare, and more. GE is known for its innovation and technological advancements, having been awarded numerous patents throughout its history.",
-      products: [
-        {
-          productName: "Wind Turbines",
-          productDescription:
-            "Wind turbines are made up of several components including blades, a rotor, a gearbox, and a generator. The blades capture the wind energy and rotate the rotor which in turn spins the generator to produce electricity.",
-        },
-        {
-          productName: "Solar Panels",
-          productDescription:
-            "Solar panels are made up of photovoltaic cells which convert sunlight into electricity. The cells are made of semiconductor materials such as silicon, and are arranged in a grid-like pattern on the panel to maximize the amount of sunlight that can be absorbed.",
-        },
-        {
-          productName: "Smart Grids",
-          productDescription:
-            "Smart grids are a modernized version of traditional power grids. They use advanced communication and control technologies to manage the flow of electricity more efficiently, and enable the integration of renewable energy sources such as wind and solar power.",
-        },
-      ],
-      peopleSoftSkills: ["Collaboration", "Innovation", "Attention to Detail"],
-      workCulture: [
-        {
-          culture: "Fast-paced",
-          importance:
-            "GE is known for its fast-paced work culture, where employees are expected to be highly productive and agile in responding to market demands.",
-        },
-        {
-          culture: "Team-oriented",
-          importance:
-            "GE values teamwork and collaboration, and encourages employees to work together to achieve common goals.",
-        },
-      ],
-      skillSets: ["Power Systems", "Control Systems", "Electromagnetics"],
-    },
-    {
-      companyName: "Siemens",
-      companyDescription:
-        "Siemens is a multinational conglomerate that operates in several industries, including energy, healthcare, and industrial automation. It is known for its innovation and technological advancements in fields such as renewable energy, smart infrastructure, and digitalization. Siemens' mission is to improve the quality of life for people around the world through its products and services.",
-      products: [
-        {
-          productName: "Electric Motors",
-          productDescription:
-            "Electric motors are made up of several components including a stator, a rotor, and bearings. The stator contains the coils of wire that generate a magnetic field when electric current passes through them. The rotor is a rotating component that interacts with the magnetic field to produce torque.",
-        },
-        {
-          productName: "Gas Turbines",
-          productDescription:
-            "Gas turbines are made up of several components including a compressor, a combustion chamber, and a turbine. The compressor takes in air and compresses it, which is then mixed with fuel in the combustion chamber and ignited to produce hot, high-pressure gas. This gas flows through the turbine, which uses the energy to produce electricity or mechanical power.",
-        },
-        {
-          productName: "Renewable Energy Solutions",
-          productDescription:
-            "Siemens offers a range of renewable energy solutions such as wind turbines, solar inverters, and energy storage systems. These products are designed to help customers transition to a low-carbon energy future.",
-        },
-      ],
-      peopleSoftSkills: ["Adaptability", "Problem Solving", "Communication"],
-      workCulture: [
-        {
-          culture: "Innovative",
-          importance:
-            "Siemens encourages innovation and creativity, and values employees who can come up with new ideas and solutions.",
-        },
-        {
-          culture: "Collaborative",
-          importance:
-            "Siemens values teamwork and collaboration, and encourages employees to work together to solve complex problems.",
-        },
-      ],
-      skillSets: ["Electrical Machines", "Power Electronics", "Smart Grids"],
-    },
-    {
-      companyName: "ABB",
-      companyDescription:
-        "ABB is a global technology company that specializes in robotics, automation, and electrical equipment. It operates through several segments, including electrification, industrial automation, motion, and robotics & discrete automation. ABB's mission is to improve energy efficiency and productivity for its customers across a wide range of industries.",
-      products: [
-        {
-          productName: "Transformers",
-          productDescription:
-            "Transformers are made by winding copper or aluminum wire around a core made of iron or steel laminations. The winding is then insulated and coated with varnish or resin to protect it from moisture and other environmental factors.",
-        },
-        {
-          productName: "Switchgears",
-          productDescription:
-            "Switchgears are made by assembling various components such as circuit breakers, isolators, relays, and control panels. These components are then wired together and tested to ensure they function properly.",
-        },
-        {
-          productName: "Drives",
-          productDescription:
-            "Drives are made by assembling power electronics components such as rectifiers, inverters, and DC-DC converters. These components are then programmed with software to control the speed and torque of electric motors.",
-        },
-      ],
-      peopleSoftSkills: ["Customer Focus", "Innovation", "Teamwork"],
-      workCulture: [
-        {
-          culture: "Dynamic",
-          importance:
-            "ABB values a dynamic work culture that encourages employees to be proactive, take risks, and pursue new ideas and opportunities. This helps to keep the company innovative and competitive in a rapidly changing industry.",
-        },
-        {
-          culture: "Inclusive",
-          importance:
-            "ABB believes in creating a diverse and inclusive workplace where all employees feel valued and respected. This helps to foster a collaborative and supportive work environment that encourages teamwork and creativity.",
-        },
-      ],
-      skillSets: ["Power Systems", "Control Systems", "Electrical Machines"],
-    },
-  ],
-};
-
-const EC = {
-  discipline: "EC",
-  details: [],
-};
+export const skillData = [
+  {
+    name: "CSE",
+    skills: [
+      "Programming languages",
+      "Data structures and algorithms",
+      "Web development (e.g. HTML/CSS, JavaScript, React)",
+      "Database management (e.g. SQL, NoSQL)",
+      "Object-oriented design",
+      "Software engineering principles",
+      "Artificial intelligence/machine learning",
+      "Data science",
+      "Computer networks",
+      "Operating systems",
+      "Cybersecurity",
+      "Cloud computing",
+      "Mobile application development",
+      "Parallel computing",
+      "Computer graphics",
+      "Natural language processing",
+      "Computer vision",
+      "Big data analytics",
+      "Software testing",
+      "Debugging",
+      "Version control (e.g. Git)",
+      "Agile software development",
+      "DevOps",
+      "UI/UX design",
+      "API development",
+      "Web scraping",
+      "Blockchain development",
+      "Virtual and augmented reality",
+      "Containerization (e.g. Docker)",
+      "Microservices architecture",
+      "Serverless computing",
+    ],
+  },
+  {
+    name: "ECE",
+    skills: [
+      "Analog and digital circuit design",
+      "Signal processing",
+      "Control systems",
+      "Electromagnetics",
+      "Communications systems",
+      "Microelectronics",
+      "Embedded systems",
+      "Computer architecture",
+      "VLSI design",
+      "Power electronics",
+      "Wireless sensor networks",
+      "Radar and sonar systems",
+      "Photonics",
+      "Optical communications",
+      "Microwave engineering",
+      "Nanotechnology",
+      "Biomedical instrumentation",
+      "FPGA design",
+      "ASIC design",
+      "Robotics",
+      "Internet of Things (IoT)",
+      "Embedded Linux",
+      "Real-time operating systems",
+      "Wireless communications",
+      "Signal integrity",
+      "System-on-a-chip (SoC) design",
+      "Antenna design",
+      "Mixed-signal design",
+      "Analog layout design",
+      "Simulation and modeling",
+    ],
+  },
+  {
+    name: "EEE",
+    skills: [
+      "Electrical machines",
+      "Power systems",
+      "Analog and digital electronics",
+      "Microcontrollers and microprocessors",
+      "Electric drives",
+      "Renewable energy sources",
+      "Instrumentation and measurement",
+      "Control systems",
+      "Digital signal processing",
+      "Power electronics",
+      "Electromagnetic theory",
+      "Electric circuits",
+      "Electrical networks",
+      "Industrial automation",
+      "Electrical safety",
+      "Electrical testing",
+      "Energy conservation",
+      "Electrical wiring",
+      "Smart grid technologies",
+      "Energy management",
+      "High-voltage engineering",
+      "Electric power transmission",
+      "Electric power distribution",
+      "Power plant engineering",
+      "Power quality",
+      "Electric motor control",
+      "Electricity market analysis",
+      "Power system protection",
+      "Electricity demand forecasting",
+      "Reliability analysis",
+    ],
+  },
+  {
+    name: "ME",
+    skills: [
+      "Mechanics",
+      "Thermodynamics",
+      "Materials science",
+      "Fluid mechanics",
+      "Heat transfer",
+      "Manufacturing processes",
+      "CAD/CAM",
+      "Mechatronics",
+      "Robotics",
+      "Automotive engineering",
+      "Aerospace engineering",
+      "Structural analysis",
+      "Finite element analysis",
+      "Machine design",
+      "Product design",
+      "Industrial engineering",
+      "Mechanical testing",
+      "Mechanical prototyping",
+      "Mechanical simulation",
+      "Mechanical drafting",
+      "Control systems",
+      "Renewable energy",
+      "Energy conversion",
+      "Design optimization",
+      "Simulation and modeling",
+      "Computer-aided engineering",
+      "Data analysis",
+      "Project management",
+      "Technical writing",
+      "Professional communication",
+    ],
+  },
+  {
+    name: "CE",
+    skills: [
+      "Structural engineering",
+      "Geotechnical engineering",
+      "Transportation engineering",
+      "Water resources engineering",
+      "Environmental engineering",
+      "Construction management",
+      "Construction materials",
+      "Construction technology",
+      "Construction safety",
+      "Structural analysis",
+      "Reinforced concrete design",
+      "Steel design",
+      "Masonry design",
+      "Wood design",
+      "Bridge engineering",
+      "Foundation engineering",
+      "Soil mechanics",
+      "Geotechnical earthquake engineering",
+      "Slope stability analysis",
+      "Pavement design",
+      "Hydrology",
+      "Hydraulics",
+      "Water treatment",
+      "Wastewater treatment",
+      "Air pollution control",
+      "Environmental impact assessment",
+      "Risk assessment",
+      "Project management",
+      "AutoCAD",
+      "Revit",
+      "Geographic Information System (GIS)",
+      "Technical writing",
+      "Professional communication",
+    ],
+  },
+].map((item) => ({
+  name: item.name,
+  skills: item.skills.map((skill) => skill.toLowerCase()),
+}));

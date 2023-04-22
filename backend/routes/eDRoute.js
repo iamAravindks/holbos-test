@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { loadData } from "../controllers/eDController.js";
+import { loadData, loadSkills } from "../controllers/eDController.js";
 import { isAuthUser } from "../middleware/middleware.js";
 
 const eDRouter = Router();
@@ -9,5 +9,11 @@ const eDRouter = Router();
 // @access Public
 
 eDRouter.get("/load-ed", isAuthUser, loadData);
+
+// @desc Get all the skills
+// @route GET /api/ed/load-skills
+// @access Public
+
+eDRouter.get("/load-skills", isAuthUser, loadSkills);
 
 export default eDRouter;

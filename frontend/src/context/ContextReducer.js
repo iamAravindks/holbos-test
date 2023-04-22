@@ -6,6 +6,7 @@ import {
   SET_ED,
   SET_ERROR,
   SET_LOADING,
+  SET_SKILLS,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT_SUCCESS,
   USER_PROFILE_UPDATE,
@@ -19,6 +20,7 @@ const ContextReducer = (state, action) => {
     loading: false,
     userStatus: null,
     ed: [],
+    skills: [],
   };
   switch (action.type) {
     case REQUEST:
@@ -41,6 +43,8 @@ const ContextReducer = (state, action) => {
 
     case SET_ED:
       return { ...state, ed: action.payload };
+    case SET_SKILLS:
+      return { ...state, skills: action.payload };
 
     case SET_ERROR:
       return { ...state, error: action.payload, loading: false };

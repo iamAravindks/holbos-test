@@ -6,47 +6,12 @@ import { getColor } from "../../utils";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Profile = () => {
-  const { userInfo, updateProfile } = useContext(Context);
+  const { userInfo, updateProfile, skills } = useContext(Context);
+
   const color = getColor(userInfo?.name + userInfo?.email);
   const [edit, setEdit] = useState(false);
+
   const { name = "", email = "", skillSets = [], discipline = "" } = userInfo;
-  const initialSkills = [
-    ...new Set(
-      [
-        "Software development",
-        "Database design and management",
-        "Data structures and algorithms",
-        "Object-oriented programming",
-        "Web development",
-        "Front-end development",
-        "Back-end development",
-        "API design and implementation",
-        "Mobile app development",
-        "Networking and security",
-        "Cloud computing",
-        "DevOps",
-        "Agile development methodologies",
-        "Project management",
-        "Technical writing and documentation",
-        "Collaboration and teamwork",
-        "Communication and interpersonal skills",
-        "Problem-solving and analytical thinking",
-        "Attention to detail",
-        "Continuous learning and professional development",
-      ].map((item) => item.toLowerCase()),
-      [...skillSets].map((item) => item.toLowerCase())
-    ),
-  ].sort();
-
-  const [defaultSkills, setDefaultSkills] = useState(initialSkills);
-  const [disciplines, setDisciplines] = useState([
-    "CSE",
-    "EEE",
-    "ECE",
-    "ME",
-    "CE",
-  ]);
-
   const initialState = {
     name: name,
     email: email,
@@ -58,6 +23,19 @@ const Profile = () => {
     discipline: discipline,
   };
   const [details, setDetails] = useState(initialState);
+  const initialSkills = () =>
+    skills
+      .filter((skill) => skill.name === details.discipline)[0]
+      .skills.filter((skill) => !details.skills.includes(skill));
+
+  const [defaultSkills, setDefaultSkills] = useState(initialSkills());
+  const [disciplines, setDisciplines] = useState([
+    "CSE",
+    "EEE",
+    "ECE",
+    "ME",
+    "CE",
+  ]);
 
   const handleFormDetails = (e) => {
     setDetails((prev) => ({
@@ -70,6 +48,10 @@ const Profile = () => {
         ...prev,
         error: prev.password !== prev.rePassword,
       }));
+    }
+
+    if (e.target.id === "discipline") {
+      setDefaultSkills(initialSkills());
     }
   };
 
@@ -96,6 +78,14 @@ const Profile = () => {
       const newSkills = prev.filter((item) => item !== e.target.value);
       return newSkills;
     });
+  };
+
+  const skillRemover = (val) => {
+    setDefaultSkills((prev) => [...prev, val].sort());
+    setDetails((prev) => ({
+      ...prev,
+      skills: prev.skills.filter((item) => item !== val),
+    }));
   };
 
   const quitEditingHandler = () => {
@@ -125,7 +115,7 @@ const Profile = () => {
           <h4 className="text-lg  w-full ">Discipline:</h4>
           <h4 className="text-lg text-info  w-full ">{discipline}</h4>
         </div>
-        <div className="flex gap-6 justify-between items-center  w-full ">
+        <div className="flex flex-wrap gap-6 justify-around items-center  w-full ">
           <h2 className="text-lg">Skills:</h2>
           {skillSets.map((skill, ind) => (
             <p key={ind} className="text-success card shadow-md p-3">
@@ -267,7 +257,10 @@ const Profile = () => {
                   key={ind}
                   className="badge badge-secondary badge-outline mx-3 flex justify-around items-center w-auto h-auto"
                 >
-                  <IoCloseCircleOutline className="cursor-pointer " />
+                  <IoCloseCircleOutline
+                    className="cursor-pointer "
+                    onClick={() => skillRemover(tag)}
+                  />
                   <p>{tag.trim()}</p>
                 </div>
               ))}

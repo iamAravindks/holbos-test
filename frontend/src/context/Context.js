@@ -9,6 +9,7 @@ import {
   SET_ED,
   SET_ERROR,
   SET_LOADING,
+  SET_SKILLS,
   USER_LOGIN_SUCCESS,
   USER_PROFILE_UPDATE,
   USER_REGISTER_SUCCESS,
@@ -21,6 +22,7 @@ const initialState = {
   loading: false,
   userStatus: {},
   ed: [],
+  skills: [],
 };
 
 const BASE_URL = "http://localhost:5000";
@@ -246,6 +248,36 @@ export const Provider = ({ children }) => {
     }
   };
 
+  const loadSkills = async () => {
+    try {
+      dispatch({ type: REQUEST });
+
+      const { data } = await axios.get(
+        `${BASE_URL}/api/ed/load-skills`,
+        config
+      );
+
+      dispatch({
+        type: SET_SKILLS,
+        payload: data?.data,
+      });
+    } catch (error) {
+      const err =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      console.log(err);
+      dispatch({
+        type: SET_ERROR,
+        payload: err,
+      });
+    } finally {
+      dispatch({
+        type: REQUEST_DONE,
+      });
+    }
+  };
+
   const setLoading = (set) => {
     if (set) {
       dispatch({ type: SET_LOADING });
@@ -264,6 +296,7 @@ export const Provider = ({ children }) => {
         error: userState.error,
         userStatus: userState.userStatus,
         ed: userState.ed,
+        skills: userState.skills,
         login,
         loadProfile,
         setLoading,
@@ -273,6 +306,7 @@ export const Provider = ({ children }) => {
         loadEd,
         signUp,
         updateProfile,
+        loadSkills,
       }}
     >
       {children}

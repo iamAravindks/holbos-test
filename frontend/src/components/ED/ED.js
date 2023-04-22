@@ -8,15 +8,16 @@ const ED = () => {
   const [tags, setTags] = useState([]);
   const [eds, setEds] = useState(ed);
 
+  console.log(ed);
   useEffect(() => {
     if (ed) {
-      setTags([...ed.map((d) => d.discipline.trim())]);
+      setTags([...ed.map((d) => d?.discipline.trim())]);
     }
   }, [ed]);
 
   useEffect(() => {
     const data = ed.filter(
-      (e) => tags.findIndex((tag) => tag === e.discipline) !== -1
+      (e) => tags.findIndex((tag) => tag === e?.discipline) !== -1
     );
 
     // setEds();

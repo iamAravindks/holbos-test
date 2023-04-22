@@ -23,7 +23,7 @@ const SignUp = () => {
     rePassword: "",
     error: null,
     hidden: true,
-    discipline: "",
+    discipline: "CSE",
   };
   const [details, setDetails] = useState(initialState);
 
@@ -106,7 +106,7 @@ const SignUp = () => {
           </div>
 
           <div className="w-full flex flex-col">
-            <label htmlFor="discipline">Discipline</label>
+            <label htmlFor="discipline">Choose Discipline</label>
 
             <select
               className="select select-bordered max-w-3xl "
@@ -115,9 +115,6 @@ const SignUp = () => {
               id="discipline"
               required
             >
-              <option disabled selected>
-                Select Discipline
-              </option>
               {disciplines.map((item, ind) => (
                 <option key={ind}>{item}</option>
               ))}

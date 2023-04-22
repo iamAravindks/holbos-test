@@ -1,5 +1,6 @@
 import connectDB from "./config/db.js";
-import { engineeringDisciplineData } from "./data.js";
+import { engineeringDisciplineData, skillData } from "./data.js";
+import Skills from "./models/SkillsModel.js";
 import EngineeringDiscipline from "./models/engineeringDisciplineSchema.js";
 
 const importData = async () => {
@@ -8,6 +9,7 @@ const importData = async () => {
     const uploadDataDocs = await EngineeringDiscipline.insertMany(
       engineeringDisciplineData
     );
+    const uploadSkills = await Skills.insertMany(skillData);
     console.log("Data uploaded successfully!");
   } catch (error) {
     console.log(error);
@@ -20,6 +22,7 @@ const destroyData = async () => {
   try {
     await connectDB();
     await EngineeringDiscipline.deleteMany({});
+    await Skills.deleteMany({});
     console.log("deletion success");
   } catch (error) {
     console.log(error);
