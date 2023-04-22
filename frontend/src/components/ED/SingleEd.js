@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Context from "../../context/Context";
 import SkillBadge from "./SkillBadge";
+import { setView } from "../../utils";
 
 const SingleEd = () => {
   const { id, discipline } = useParams();
   const { ed, userInfo } = useContext(Context);
   const [percentage, setPercentage] = useState(0);
   const [missingSkills, setMissingSkills] = useState([]);
+  const viewRef = useRef(null);
 
   const currentEd = ed
     ?.filter((item) => item.discipline === discipline)
@@ -65,7 +67,9 @@ const SingleEd = () => {
         <p className="py-4 font-medium break-words text-justify w-full">
           {companyDescription}
         </p>
-
+        <button className="btn " onClick={() => setView(viewRef)}>
+          Check if profiles match
+        </button>
         <div className="w-full py-4">
           <h2 className="text-xl uppercase font-light text-black border-black border max-w-max text-center rounded-md p-2">
             Products & Services
@@ -120,7 +124,10 @@ const SingleEd = () => {
             </div>
           ))}
         </div>
-        <div className=" w-full flex flex-col gap-6 justify-center items-center my-10">
+        <div
+          className=" w-full flex flex-col gap-6 justify-center items-center my-10"
+          ref={viewRef}
+        >
           <h1 className="text-3xl font-extrabold">You profile matches</h1>
           <div
             className="radial-progress text-primary"

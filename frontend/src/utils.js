@@ -20,3 +20,10 @@ export const getColor = (str) => {
   }
   return color;
 };
+
+export const setView = (ref) =>
+  ref.current.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+    inline: "start",
+  });

@@ -1,16 +1,12 @@
 import React, { useContext, useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-
+import { IoCloseCircleOutline } from "react-icons/io5";
 import Context from "../../context/Context";
 import { getColor } from "../../utils";
-import { IoCloseCircleOutline } from "react-icons/io5";
 import Suggestions from "../Suggestions/Suggestions";
 
 const Profile = () => {
   const { userInfo, updateProfile, skills } = useContext(Context);
-
-  const color = getColor(userInfo?.name + userInfo?.email);
-  const [edit, setEdit] = useState(false);
 
   const { name = "", email = "", skillSets = [], discipline = "" } = userInfo;
   const initialState = {
@@ -23,20 +19,18 @@ const Profile = () => {
     skills: skillSets,
     discipline: discipline,
   };
-  const [details, setDetails] = useState(initialState);
+  const color = getColor(userInfo?.name + userInfo?.email);
+
+  const disciplines = ["CSE", "EEE", "ECE", "ME", "CE"];
+
   const initialSkills = () =>
     skills
       .filter((skill) => skill.name === details.discipline)[0]
       .skills.filter((skill) => !details.skills.includes(skill));
 
+  const [edit, setEdit] = useState(false);
+  const [details, setDetails] = useState(initialState);
   const [defaultSkills, setDefaultSkills] = useState(initialSkills());
-  const [disciplines, setDisciplines] = useState([
-    "CSE",
-    "EEE",
-    "ECE",
-    "ME",
-    "CE",
-  ]);
 
   const handleFormDetails = (e) => {
     setDetails((prev) => ({
@@ -132,8 +126,8 @@ const Profile = () => {
             <h4 className="text-lg  w-full ">Discipline:</h4>
             <h4 className="text-lg text-info  w-full ">{discipline}</h4>
           </div>
-          <div className="flex flex-wrap gap-6 justify-around items-center  w-full ">
-            <h2 className="text-lg">Skills:</h2>
+          <h2 className="text-lg">Skills:</h2>
+          <div className="flex flex-wrap gap-3 justify-start items-center  w-full ">
             {skillSets.map((skill, ind) => (
               <p key={ind} className="text-success card shadow-md p-3">
                 {skill}
