@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Context from "../../context/Context";
 import ED from "../ED/ED";
+import Suggestions from "../Suggestions/Suggestions";
 
 const Home = () => {
   const {
@@ -17,6 +18,7 @@ const Home = () => {
           Explore Engineering Industries
         </h1>
       </div>
+      <Suggestions />
       <ED />
     </div>
   );

@@ -8,7 +8,6 @@ const ED = () => {
   const [tags, setTags] = useState([]);
   const [eds, setEds] = useState(ed);
 
-  console.log(ed);
   useEffect(() => {
     if (ed) {
       setTags([...ed.map((d) => d?.discipline.trim())]);

@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import Context from "../../context/Context";
+import SkillBadge from "./SkillBadge";
 
 const SingleEd = () => {
   const { id, discipline } = useParams();
-  const { ed } = useContext(Context);
+  const { ed, userInfo } = useContext(Context);
+  const [percentage, setPercentage] = useState(0);
+  const [missingSkills, setMissingSkills] = useState([]);
 
   const currentEd = ed
     ?.filter((item) => item.discipline === discipline)
@@ -24,6 +27,22 @@ const SingleEd = () => {
     workCulture,
     skillSets,
   } = currentEd;
+
+  useEffect(() => {
+    setMissingSkills(
+      skillSets.filter(
+        (skill) => !userInfo.skillSets.includes(skill.toLowerCase())
+      )
+    );
+  }, [userInfo?._id]);
+
+  useEffect(() => {
+    const percentage = Math.round(
+      (1 - missingSkills.length / skillSets.length) * 100
+    );
+    setPercentage(percentage);
+  }, [missingSkills]);
+
   return (
     <div className="">
       <Link
@@ -46,6 +65,7 @@ const SingleEd = () => {
         <p className="py-4 font-medium break-words text-justify w-full">
           {companyDescription}
         </p>
+
         <div className="w-full py-4">
           <h2 className="text-xl uppercase font-light text-black border-black border max-w-max text-center rounded-md p-2">
             Products & Services
@@ -100,23 +120,42 @@ const SingleEd = () => {
             </div>
           ))}
         </div>
+        <div className=" w-full flex flex-col gap-6 justify-center items-center my-10">
+          <h1 className="text-3xl font-extrabold">You profile matches</h1>
+          <div
+            className="radial-progress text-primary"
+            style={{ "--value": percentage }}
+          >
+            {percentage}%
+          </div>
+          <Link to={"/profile"} className="btn btn-outline">
+            Update Profile
+          </Link>
+        </div>
 
-        <div className="w-full py-4">
-          <h2 className="text-xl uppercase font-light text-success  border max-w-max text-center rounded-md p-2">
-            TECH SKILLS YOU NEEDED
-          </h2>
-        </div>
-        <div className="flex flex-wrap gap-6">
-          {skillSets.map((skill, ind) => (
-            <div className="card shadow-md bg-success rounded-none" key={ind}>
-              <div className="card-body">
-                <h2 className="text-lg w-full  text-white card-title">
-                  {skill}
-                </h2>
-              </div>
-            </div>
-          ))}
-        </div>
+        <SkillBadge
+          title={"tech skills you needed"}
+          data={skillSets}
+          text={"text=success"}
+          bg={"bg-success"}
+        />
+
+        <SkillBadge
+          title={"your skills"}
+          data={userInfo.skillSets}
+          text={"text-warning"}
+          bg={"bg-warning"}
+        />
+        {missingSkills.length > 0 && (
+          <>
+            <SkillBadge
+              title={"Learn these skills and update yourself"}
+              data={missingSkills}
+              text={"text-error"}
+              bg={"bg-error"}
+            />
+          </>
+        )}
       </div>
     </div>
   );

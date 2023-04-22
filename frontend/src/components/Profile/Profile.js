@@ -4,6 +4,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Context from "../../context/Context";
 import { getColor } from "../../utils";
 import { IoCloseCircleOutline } from "react-icons/io5";
+import Suggestions from "../Suggestions/Suggestions";
 
 const Profile = () => {
   const { userInfo, updateProfile, skills } = useContext(Context);
@@ -51,7 +52,12 @@ const Profile = () => {
     }
 
     if (e.target.id === "discipline") {
-      setDefaultSkills(initialSkills());
+      setDefaultSkills(
+        skills
+          .filter((skill) => skill.name === e.target.value)[0]
+          .skills.filter((skill) => !details.skills.includes(skill))
+      );
+      setDetails((prev) => ({ ...prev, skills: [] }));
     }
   };
 
@@ -89,49 +95,62 @@ const Profile = () => {
   };
 
   const quitEditingHandler = () => {
-    setDetails(initialState);
-    setDefaultSkills(initialSkills);
-    toggleMode();
+    const answer = window.confirm("Do you wish to quit editing");
+    if (answer) {
+      setDetails(initialState);
+      setDefaultSkills(initialSkills);
+      toggleMode();
+    }
   };
 
   const profileUpdateHandler = (e) => {
     e.preventDefault();
-    const { name, email, discipline, password, skills } = details;
 
-    if (password.length > 0)
+    const { name, email, discipline, password, skills } = details;
+    const message = "Are you sure you want to make changes?";
+
+    const shouldUpdate = window.confirm(message);
+    if (!shouldUpdate) return;
+
+    if (password.trim()) {
       updateProfile(name, email, discipline, skills, password);
-    else updateProfile(name, email, discipline, skills);
+    } else {
+      updateProfile(name, email, discipline, skills);
+    }
   };
 
   const ProfileView = () => {
     return (
-      <div className="max-w-[600px] flex flex-col gap-4 ">
-        <h1 className="text-5xl  w-full text-center">{name}</h1>
-        <div className="flex gap-6 justify-between items-center  w-full ">
-          <h4 className="text-lg  w-full ">Email:</h4>
-          <h4 className="text-lg text-info  w-full ">{email}</h4>
+      <>
+        <div className="max-w-[600px] flex flex-col gap-4 ">
+          <h1 className="text-5xl  w-full text-center">{name}</h1>
+          <div className="flex gap-6 justify-between items-center  w-full ">
+            <h4 className="text-lg  w-full ">Email:</h4>
+            <h4 className="text-lg text-info  w-full ">{email}</h4>
+          </div>
+          <div className="flex gap-6 justify-between items-center  w-full ">
+            <h4 className="text-lg  w-full ">Discipline:</h4>
+            <h4 className="text-lg text-info  w-full ">{discipline}</h4>
+          </div>
+          <div className="flex flex-wrap gap-6 justify-around items-center  w-full ">
+            <h2 className="text-lg">Skills:</h2>
+            {skillSets.map((skill, ind) => (
+              <p key={ind} className="text-success card shadow-md p-3">
+                {skill}
+              </p>
+            ))}
+          </div>
+          <button
+            type="submit"
+            className="btn btn-primary btn-wide text-white"
+            disabled={details.error ? true : false}
+            onClick={toggleMode}
+          >
+            edit
+          </button>
         </div>
-        <div className="flex gap-6 justify-between items-center  w-full ">
-          <h4 className="text-lg  w-full ">Discipline:</h4>
-          <h4 className="text-lg text-info  w-full ">{discipline}</h4>
-        </div>
-        <div className="flex flex-wrap gap-6 justify-around items-center  w-full ">
-          <h2 className="text-lg">Skills:</h2>
-          {skillSets.map((skill, ind) => (
-            <p key={ind} className="text-success card shadow-md p-3">
-              {skill}
-            </p>
-          ))}
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary btn-wide text-white"
-          disabled={details.error ? true : false}
-          onClick={toggleMode}
-        >
-          edit
-        </button>
-      </div>
+        <Suggestions />
+      </>
     );
   };
 

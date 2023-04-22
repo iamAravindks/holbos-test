@@ -12,7 +12,10 @@ const EdCard = ({ item }) => {
       <div className="flex gap-3 justify-around items-center flex-wrap">
         {item?.details?.map((company) => {
           return (
-            <div key={company._id} className="card w-96 bg-base-100 shadow-xl">
+            <div
+              key={company._id}
+              className="card w-96 min-h-[500px] bg-base-100 shadow-xl"
+            >
               <figure className="px-10 pt-10">
                 <img
                   src={company.companyImage}
