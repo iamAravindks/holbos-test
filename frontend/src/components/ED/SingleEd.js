@@ -78,14 +78,14 @@ const SingleEd = () => {
         <div className="flex gap-6 md:justify-start sm:justify-center items-center flex-wrap p-3 my-10">
           {products.map((product, ind) => (
             <div
-              className="card lg:card-side bg-base-100 shadow-xl max-w-100  min-h-[250px]"
+              className="card lg:card-side bg-base-100 shadow-xl max-w-[auto] max-h-[400px]  "
               key={ind}
             >
-              <figure>
+              <figure className="max-w-[400px]">
                 <img
                   src={product.productImage}
                   alt={product.productName}
-                  className="object-cover "
+                  className="object-cover  h-full hover:scale-105 duration-200"
                 />
               </figure>
               <div className="card-body">
@@ -95,6 +95,7 @@ const SingleEd = () => {
             </div>
           ))}
         </div>
+
         <div className="w-full py-4">
           <h2 className="text-xl uppercase font-light text-black border-black border max-w-max text-center rounded-md p-2">
             What we follow
@@ -160,6 +161,7 @@ const SingleEd = () => {
               data={missingSkills}
               text={"text-error"}
               bg={"bg-error"}
+              url={"https://youtu.be/8mAITcNt710"}
             />
           </>
         )}
