@@ -48,7 +48,13 @@ export const engineeringDisciplineData = [
               "GE values teamwork and collaboration, and encourages employees to work together to achieve common goals.",
           },
         ],
-        skillSets: ["Power Systems", "Control Systems", "Electromagnetics"],
+        skillSets: [
+          "Electric circuits",
+          "Electrical networks",
+          "Industrial automation",
+          "Electrical safety",
+          "Electrical testing",
+        ],
       },
       {
         companyName: "Siemens",
@@ -95,7 +101,14 @@ export const engineeringDisciplineData = [
               "Siemens values teamwork and collaboration, and encourages employees to work together to solve complex problems.",
           },
         ],
-        skillSets: ["Electrical Machines", "Power Electronics", "Smart Grids"],
+        skillSets: [
+          "Energy management",
+          "High-voltage engineering",
+          "Electric power transmission",
+          "Electric power distribution",
+          "Power plant engineering",
+          "Power quality",
+        ],
       },
       {
         companyName: "ABB",
@@ -360,7 +373,15 @@ export const engineeringDisciplineData = [
               "Google operates in a highly competitive and dynamic environment. It values speed and agility in decision-making and execution.",
           },
         ],
-        skillSets: ["Algorithms", "Data Structures", "Machine Learning"],
+        skillSets: [
+          "Programming languages",
+          "Data structures and algorithms",
+          "Web development (e.g. HTML/CSS, JavaScript, React)",
+          "Database management (e.g. SQL, NoSQL)",
+          "Object-oriented design",
+          "Software engineering principles",
+          "Artificial intelligence/machine learning",
+        ],
       },
       {
         companyName: "Microsoft",
@@ -409,9 +430,12 @@ export const engineeringDisciplineData = [
           },
         ],
         skillSets: [
-          "Software Engineering",
-          "Database Management",
-          "Cloud Computing",
+          "Computer networks",
+          "Operating systems",
+          "Cybersecurity",
+          "Cloud computing",
+          "Mobile application development",
+          "Parallel computing",
         ],
       },
       {
