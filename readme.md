@@ -1,29 +1,38 @@
 # Holbos
 
-Sample prototype for the test by Holbos.
-
-
+Sample prototype for the test by holbos
 
 ## Made with
 
-- MERN stack
-- FRONTEND: React and Tailwind CSS with daisyUI
-- BACKEND: Node and Express server with MongoDB as the database
+MERN stack
+
+- **FRONTEND**: React and tailwind css with daisyUI
+- **BACKEND**: Node and express server with mongoDB as database
 
 ## Prerequisites
 
-- Node.js and npm must be installed on your system.
+Before you begin, make sure your development environment includes `Node.js` and `npm`.
 
-## Running the App
+## Getting Started
 
-1. Make sure Node.js and npm are installed on your system.
-2. Create a `.env` file in the `backend` folder with the following values:
+### Backend Setup
+
+1. Go to the `backend` folder and create a `.env` file with the following values:
    - `MONGODB_URL`
    - `JWT_SECRET`
-3. Go to `cd backend` and run `npm install` then `npm run server`
-4. Go to `cd frontend` and run `npm install` and `npm start`
-5. Open `localhost:3000` in any browser
+2. Run `npm install` to install the required dependencies.
+3. Run `npm run data:import` to set data.
+4. To delete the data, run `npm run data:destroy`.
+5. Run `npm run server` to start the backend server.
+
+### Frontend Setup
+
+1. Go to the `frontend` folder.
+2. Run `npm install` to install the required dependencies.
+3. Run `npm start` to start the frontend server.
+4. Open `localhost:3000` in any browser.
 
 ## GitHub
 
 Find the code for this project on [GitHub](https://github.com/iamAravindks/holbos-test).
+
